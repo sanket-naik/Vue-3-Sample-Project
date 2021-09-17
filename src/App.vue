@@ -1,17 +1,35 @@
 <template>
-  <UserProfile/>
-  <Test 
-    msg1="hello this msg1"
-    msg2="hello this msg2"/>
+
+  <div>
+    <router-link to="/test">Nav 1</router-link> &nbsp; &nbsp;
+    <router-link to="/abcd">Nav 2</router-link>
+
+  </div>
+
+  <button @click="GoBack">Go Back</button>
+  <button @click="Redirect">Redirect</button>
+  <button @click="GoForword">Go Forword</button>
+
+  <router-view/>
 </template>
 
 <script>
-import UserProfile from './components/UserProfile.vue'
-import Test from "./components/Test.vue";
-
 export default {
   name:"App",
-  components: { UserProfile, Test },
+    methods:{
+        GoBack(){
+          // go backword 1 step
+            this.$router.go(-1)
+        },
+        GoForword(){
+          // to forword 1 step
+            this.$router.go(1)
+        },
+        Redirect(){
+          // redirects to home
+          this.$router.push('/')
+        }
+    }
 }
 </script>
   
